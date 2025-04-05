@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,50 @@
 
   body {
     @apply bg-background text-foreground;
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+    min-height: 100vh;
+    color: #e2e8f0;
+  }
+}
+
+@layer components {
+  .hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  
+  .solo-panel {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid #4361ee;
+    box-shadow: 0 0 15px rgba(67, 97, 238, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 0.5rem;
+  }
+  
+  .solo-button {
+    @apply relative overflow-hidden bg-solo px-4 py-2 rounded-md text-white 
+           transition-all duration-300 hover:bg-solo-dark focus:ring-2 
+           focus:ring-solo-light focus:outline-none;
+  }
+  
+  .solo-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  
+  .solo-button:hover::before {
+    left: 100%;
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #4361ee, #4cc9f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
